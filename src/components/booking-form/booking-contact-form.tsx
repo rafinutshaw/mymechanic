@@ -32,7 +32,7 @@ function BookingContactForm(props: BookingContactFormProps) {
                     {...register("email", { required: true })}
                     className="form-input" />
             </div>
-            <div className='flex justify-between ml-auto'>
+            <div className='flex justify-between'>
                 <button type='button' onClick={() => props.onPrev()} className='btn-primary'>Go back</button>
                 <button type='submit' className='btn-primary'>Next</button>
             </div>
