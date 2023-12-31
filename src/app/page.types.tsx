@@ -1,4 +1,4 @@
 
-export interface IFormInput {
+export interface IBookingLocationInput {
   location: string
 }
