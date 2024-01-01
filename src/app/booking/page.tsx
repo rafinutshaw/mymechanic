@@ -40,7 +40,6 @@ function Booking() {
 
 
     const goToStep = (newStep: number) => {
-        debugger
         if (newStep <= maxStep) {
             setStep(newStep)
         }
@@ -52,22 +51,24 @@ function Booking() {
     console.log(bookingInfo!!)
     return (
         <div className='mx-auto  card' style={{ maxWidth: 880 }}>
+            {/* stepper  */}
             <div className='flex items-center'>
-                <div className='h-14 w-14 text-xs rounded-full bg-blue-200 border flex justify-center items-center cursor-pointer'
-                    onClick={() => goToStep(0)}
-                >Service</div>
-                <div className='h-2 bg-blue-400 flex-grow'></div>
-                <div className='h-14 w-14 text-xs rounded-full bg-blue-200 border flex justify-center items-center cursor-pointer'
-                    onClick={() => goToStep(1)}
-                >Contact</div>
-                <div className='h-2 bg-blue-400 flex-grow'></div>
-                <div className='h-14 w-14 text-xs rounded-full bg-blue-200 border flex justify-center items-center cursor-pointer'
-                    onClick={() => goToStep(2)}
-                >Schedule</div>
-                <div className='h-2 bg-blue-400 flex-grow'></div>
-                <div className='h-14 w-14 text-xs rounded-full bg-blue-200 border flex justify-center items-center cursor-pointer'
-                    onClick={() => goToStep(3)}
-                >Confirm</div>
+                {Array.from({ length: 4 }).map((_, index) => (
+                    <>
+                        {/* Stepper circle */}
+                        <div
+                            className={`h-14 w-14 text-xs rounded-full border flex justify-center items-center cursor-pointer 
+                            ${step === index ? 'bg-blue-500 text-white' : 'bg-blue-200 text-gray-700'}
+                            ${index > maxStep ? 'opacity-50 cursor-not-allowed' : ''}`}
+                            onClick={() => goToStep(index)}
+                            key={index}
+                        >
+                            {['Service', 'Contact', 'Schedule', 'Confirm'][index]}
+                        </div>
+                        {/* Stepper line (except after the last step) */}
+                        {index !== 3 && <div className='h-2 bg-blue-400 flex-grow'></div>}
+                    </>
+                ))}
             </div>
             <div className={`${step == 0 ? 'block' : 'hidden'}`}>
                 <BookingServiceForm onNext={goNext} />
