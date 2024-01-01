@@ -37,7 +37,8 @@ function BookingServiceForm(props: BookingServiceFormProps) {
     }
 
     return (
-        <form className={`mx-10 card`} onSubmit={handleSubmit(onSubmit)}>
+        <form onSubmit={handleSubmit(onSubmit)}>
+            <div className='text-xl font-bold mb-2'>Select a service</div>
             <div className="mb-5">
                 <label htmlFor="registraion" className="form-label">Vehicle registration number</label>
                 <input id='registraion' className='form-input' placeholder='XXXXXXX' {...register("registrationNumber", { required: true })} />

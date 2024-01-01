@@ -10,10 +10,13 @@ function BookingContactForm(props: BookingContactFormProps) {
 
     const onSubmit: SubmitHandler<IBookingContactFromInput> = (data) => {
         console.log(data)
+        props.onNext(data)
     }
 
     return (
-        <form className={`mx-10 card`} onSubmit={handleSubmit(onSubmit)}>
+        <form onSubmit={handleSubmit(onSubmit)}>
+            <div className='text-xl font-bold mb-2'>Contact Info</div>
+
             <div className="mb-5">
                 <label htmlFor="fullname" className="form-label">Enter Fullname</label>
                 <input id="location"

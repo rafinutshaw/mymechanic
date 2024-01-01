@@ -1,9 +1,6 @@
 
 export interface IBookingSchedulerFromInput {
-    registrationNumber: string
-    weather: string,
-    service: string
-    notes: string
+    date: string
 }
 
 export type BookingSchedulerFormProps = {
